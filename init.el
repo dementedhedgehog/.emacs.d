@@ -9,23 +9,23 @@
 ; 
 (message "set up the package manager")
 
-;; ; start the package manager
-;; (require 'package)
+; start the package manager
+(require 'package)
 
-;; ; add to the repository list
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+; add to the repository list
+;(add-to-list 'package-archives
+;             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
 
-;; ; initialize the package
-;; (package-initialize)
+; initialize the package
+(package-initialize)
 
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; auto-complete
-;; ; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; auto-complete
+; 
 ;; (message "set up auto-complete")
 ;; (require 'auto-complete)
 
@@ -33,28 +33,28 @@
 ;; (require 'auto-complete-config)
 ;; (ac-config-default)
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; flymake-mode 
-;; ; (checks syntax on the fly)
-;; ; 
-;; ;; (message "set up flymake")
-;; ;; (defun blaizes:flymake-google-init () 
-;; ;;   (require 'flymake-google-cpplint)
-;; ;;   (custom-set-variables
-;; ;;    '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
-;; ;;   (flymake-google-cpplint-load)
-;; ;;   )
-;; ;; (add-hook 'c-mode-hook 'blaizes:flymake-google-init)
-;; ;; (add-hook 'c++-mode-hook 'blaizes:flymake-google-init)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; flymake-mode 
+; (checks syntax on the fly)
+; 
+;; (message "set up flymake")
+;; (defun blaizes:flymake-google-init () 
+;;   (require 'flymake-google-cpplint)
+;;   (custom-set-variables
+;;    '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
+;;   (flymake-google-cpplint-load)
+;;   )
+;; (add-hook 'c-mode-hook 'blaizes:flymake-google-init)
+;; (add-hook 'c++-mode-hook 'blaizes:flymake-google-init)
 
-;; ;; ; start google-c-style with emacs
-;; ;; (require 'google-c-style)
-;; ;; (add-hook 'c-mode-common-hook 'google-set-c-style)
-;; ;; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;; ; start google-c-style with emacs
+;; (require 'google-c-style)
+;; (add-hook 'c-mode-common-hook 'google-set-c-style)
+;; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; setup auto complete for c headers
-;; ; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; setup auto complete for c headers
+; 
 ;; (message "set up auto-complete for c headers")
 ;; (defun blaizes:ac-c-header-init ()
 ;;   (require 'auto-complete-c-headers)
@@ -168,76 +168,76 @@
 
 ;; (add-hook 'js-mode-hook 'spaces-not-tabs-js-mode-hook)
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;
-;; ; Add some methods
-;; ;
-;; (message "add method kill-all-buffers")
-;; (defun kill-all-buffers ()
-;;     "Kill all buffers."
-;;     (interactive)
-;;     (mapc 'kill-buffer (buffer-list)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Add some methods
+;
+(message "\nadd method kill-all-buffers")
+(defun kill-all-buffers ()
+    "Kill all buffers."
+    (interactive)
+    (mapc 'kill-buffer (buffer-list)))
 
 
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;
-;; ; User interface modes
-;; ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; User interface modes
+;
 
-;; ; save space by hidding the menu and tool bar
-;; (menu-bar-mode -1)
-;; (tool-bar-mode -1)
+; save space by hidding the menu and tool bar
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
-;; ; hide the startup message
-;; (message "hide the startup message")
-;; (setq inhibit-startup-message t)
+; hide the startup message
+(message "hide the startup message")
+(setq inhibit-startup-message t)
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;
-;; ; Oooh - Pretty Colours
-;; ;
-;; (message "turn on font-lock mode")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Oooh - Pretty Colours
+;
+(message "turn on font-lock mode")
 
-;; ;(require 'extra-latex-font-lock)
-;; ;(setq font-lock-maximum-decoration t)
+;(require 'extra-latex-font-lock)
+;(setq font-lock-maximum-decoration t)
 
-;; ; turn on pretty colours
-;; (global-font-lock-mode t)
+; turn on pretty colours
+(global-font-lock-mode t)
 
-;; ; fn for setting pretty frame colours
-;; (defun set-frame-options ()
-;;   (set-foreground-color "yellow")
-;;   (set-background-color "black")
-;;   (set-cursor-color "Blue")
-;;   (message "set frame options")
-;; )
-;; ; set the frame options for this frame using the fn above
-;; (set-frame-options)
-;; (defun set-any-other-frame-options (frame)
-;;   (select-frame frame)
-;;   (set-frame-options)
-;; )
-;; ; and any other frames we create..
-;; (setq after-make-frame-functions 'set-any-other-frame-options)
+; fn for setting pretty frame colours
+(defun set-frame-options ()
+  (set-foreground-color "yellow")
+  (set-background-color "black")
+  (set-cursor-color "Blue")
+  (message "set frame options")
+)
+; set the frame options for this frame using the fn above
+(set-frame-options)
+(defun set-any-other-frame-options (frame)
+  (select-frame frame)
+  (set-frame-options)
+)
+; and any other frames we create..
+(setq after-make-frame-functions 'set-any-other-frame-options)
 
-;; ; set faces at the end to make sure they don't get clobbered
-;; (cond ((and t window-system)
-;;        (message "setting faces")
-;;        (custom-set-faces
-;;         '(font-lock-comment-face ((t (:foreground "green"))))
-;; 		  '(font-lock-string-face ((t (:foreground "wheat"))))
-;; 		  '(font-lock-keyword-face ((t (:foreground "orangered"))))
-;; 		  '(show-paren-mismatch-face ((t (:background "red"))))
-;; 		  '(font-lock-type-face ((t (:foreground "MediumSpringGreen"))))
-;; 		  '(modeline ((t (:foreground "gold" :background "navy"))))
-;; 		  '(show-paren-match-face ((t (:background "blue"))))
-;; 		  '(font-lock-function-name-face ((t (:foreground "orange"))))
-;; 		  )
-;;        )
-;;       )
+; set faces at the end to make sure they don't get clobbered
+(cond ((and t window-system)
+       (message "setting faces")
+       (custom-set-faces
+        '(font-lock-comment-face ((t (:foreground "medium spring green"))))
+		  '(font-lock-string-face ((t (:foreground "wheat"))))
+		  '(font-lock-keyword-face ((t (:foreground "orangered"))))
+		  '(show-paren-mismatch-face ((t (:background "red"))))
+		  '(font-lock-type-face ((t (:foreground "MediumSpringGreen"))))
+		  '(modeline ((t (:foreground "gold" :background "navy"))))
+		  '(show-paren-match-face ((t (:background "blue"))))
+		  '(font-lock-function-name-face ((t (:foreground "orange"))))
+		  )
+       )
+      )
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -281,3 +281,22 @@
 ;;  '(modeline ((t (:foreground "gold" :background "navy"))))
 ;;  '(show-paren-match-face ((t (:background "blue"))))
 ;;  '(show-paren-mismatch-face ((t (:background "red")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(exec-path-from-shell go-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-comment-face ((t (:foreground "medium spring green"))))
+ '(font-lock-function-name-face ((t (:foreground "orange"))))
+ '(font-lock-keyword-face ((t (:foreground "orangered"))))
+ '(font-lock-string-face ((t (:foreground "wheat"))))
+ '(font-lock-type-face ((t (:foreground "MediumSpringGreen"))))
+ '(modeline ((t (:foreground "gold" :background "navy"))))
+ '(show-paren-match-face ((t (:background "blue"))))
+ '(show-paren-mismatch-face ((t (:background "red")))))
